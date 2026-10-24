@@ -1038,3 +1038,50 @@ body.page-exit {
 
   object-fit: contain;
 }
+/* =====================================
+   FIX OURA RING GIFT REVEAL
+===================================== */
+
+/* Hide the gift reveal before clicking */
+
+.gift-reveal {
+  display: none !important;
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* Show the reveal only after clicking */
+
+.gift-reveal.visible {
+  display: block !important;
+  opacity: 1;
+  visibility: visible;
+
+  animation: giftAppear 1s ease forwards;
+}
+
+/* Ring image styling */
+
+.oura-image {
+  width: 110px;
+  height: 110px;
+  max-width: 100%;
+
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+}
+
+/* Reveal animation */
+
+@keyframes giftAppear {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.8);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
