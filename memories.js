@@ -57,14 +57,14 @@ document.addEventListener("DOMContentLoaded", () => {
       title: "The Adventurer",
       label: "Chapter Three",
       text: "From new places to new experiences, your love for travelling makes every adventure UNFORGETABLE.",
-      image: "assets/memory3.jpeg"
+      image: "assets/memory3.JPEG"
     },
 
     {
       title: "The Beautiful Mind",
       label: "Chapter Four",
       text: "Smart, thoughtful, playful, and full of dreams.My favourite person in the world",
-      image: "assets/memory4.jpeg"
+      image: "assets/memory4.JPEG"
     },
 
     {
@@ -78,7 +78,7 @@ document.addEventListener("DOMContentLoaded", () => {
       title: "To My Golden Star",
       label: "Chapter Six",
       text: "If I could write a thousand pages about you, they still wouldn't be enough. Thank you for being you my love ❤️",
-      image: "assets/memory6.jpeg"
+      image: "assets/memory6.JPEG"
     },
 
     {
