@@ -55,6 +55,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Apply positions and variables
     star.style.left = `${left}%`;
+    star.style.animationDelay = `-${Math.random() * 3}s`;
 
     star.style.setProperty(
       "--size",

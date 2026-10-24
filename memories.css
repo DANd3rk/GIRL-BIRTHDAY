@@ -1018,3 +1018,23 @@ body.page-exit {
     0 5px 10px rgba(0, 0, 0, 0.2)
   );
 }
+/* Fix memory photos not displaying */
+
+.memory-page.active .photo-frame {
+  display: block !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  animation: none !important;
+  transform: rotate(-2deg) !important;
+}
+
+.memory-page.active .photo-frame img {
+  display: block !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: contain;
+}

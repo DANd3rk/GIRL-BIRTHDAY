@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", () => {
  {
       title: "The Girl With the Golden Smile",
       label: "Chapter One",
-      text: "Some people light up a room. You light up an entire world. My Beautiful mischievious Queen. ❤️",
+      text: "Some people light up a room, You light up an entire world. My Beautiful mischievous Queen. ❤️",
       image: "assets/memory1.jpeg"
     },
 
@@ -63,7 +63,7 @@ document.addEventListener("DOMContentLoaded", () => {
     {
       title: "The Beautiful Mind",
       label: "Chapter Four",
-      text: "Smart, thoughtful, playful, and full of dreams.My favourtie person in the world",
+      text: "Smart, thoughtful, playful, and full of dreams.My favourite person in the world",
       image: "assets/memory4.jpeg"
     },
 
@@ -77,7 +77,7 @@ document.addEventListener("DOMContentLoaded", () => {
     {
       title: "To My Golden Star",
       label: "Chapter Six",
-      text: "If I could write a thousand pages about you, they still wouldn't be enough. Thank you for being you.My love ❤️",
+      text: "If I could write a thousand pages about you, they still wouldn't be enough. Thank you for being you my love ❤️",
       image: "assets/memory6.jpeg"
     },
 
@@ -286,7 +286,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
             <h4 class="final-birthday-message">
-              Happy 26th Birthday,<br>
+              Happy 25th Birthday,<br>
               Our Golden Star! ✨(more info, ask us)
             </h4>
 
