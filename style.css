@@ -1,0 +1,640 @@
+/* =========================================
+   MY GOLDEN STAR — BIRTHDAY EXPERIENCE
+========================================= */
+
+/* GENERAL RESET */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  min-height: 100dvh;
+
+  background: radial-gradient(
+    ellipse at center,
+    #241b13 0%,
+    #080609 75%
+  );
+
+  color: #f7e5ba;
+  font-family: Georgia, "Times New Roman", serif;
+
+  overflow-x: hidden;
+}
+
+/* =========================================
+   MAIN INVITATION SECTION
+========================================= */
+
+.invitation {
+  position: relative;
+
+  min-height: 100vh;
+  min-height: 100dvh;
+
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;
+  align-items: center;
+
+  gap: 20px;
+  padding: 50px 20px;
+
+  text-align: center;
+}
+
+/* =========================================
+   TITLE
+========================================= */
+
+.title {
+  font-size: clamp(2.2rem, 8vw, 4rem);
+
+  color: #f5d98a;
+
+  text-shadow:
+    0 0 10px rgba(255, 215, 120, 0.3),
+    0 0 25px rgba(220, 174, 77, 0.4);
+
+  animation: titleGlow 3s ease-in-out infinite alternate;
+}
+
+.subtitle {
+  color: #dbc9a7;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+@keyframes titleGlow {
+  from {
+    text-shadow: 0 0 10px rgba(255, 215, 120, 0.3);
+  }
+
+  to {
+    text-shadow:
+      0 0 20px rgba(255, 215, 120, 0.6),
+      0 0 40px rgba(255, 195, 80, 0.25);
+  }
+}
+
+/* =========================================
+   ENVELOPE
+========================================= */
+
+.envelope {
+  position: relative;
+
+  width: 270px;
+  height: 180px;
+
+  margin: 80px 0 30px;
+
+  border: none;
+  border-radius: 6px;
+
+  background: #d6ac65;
+
+  cursor: pointer;
+
+  perspective: 800px;
+
+  animation: envelopeFloat 3s ease-in-out infinite;
+
+  filter: drop-shadow(0 15px 25px rgba(0, 0, 0, 0.4));
+}
+
+/* Floating animation */
+
+@keyframes envelopeFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+/* =========================================
+   ENVELOPE FLAP
+========================================= */
+
+.envelope-flap {
+  position: absolute;
+  inset: 0;
+
+  background: #edc987;
+
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    50% 58%
+  );
+
+  transform-origin: top center;
+
+  transition: transform 0.8s ease;
+
+  z-index: 4;
+
+  pointer-events: none;
+}
+
+/* =========================================
+   ENVELOPE FRONT
+========================================= */
+
+.envelope-front {
+  position: absolute;
+  inset: 0;
+
+  background: #c99a51;
+
+  clip-path: polygon(
+    0 0,
+    50% 53%,
+    100% 0,
+    100% 100%,
+    0 100%
+  );
+
+  z-index: 2;
+
+  pointer-events: none;
+}
+
+/* =========================================
+   LETTER INSIDE ENVELOPE
+========================================= */
+
+.letter {
+  position: absolute;
+
+  width: 88%;
+  height: 145px;
+
+  left: 6%;
+  bottom: 10px;
+
+  background: linear-gradient(
+    145deg,
+    #fff7e6,
+    #ffe8bb
+  );
+
+  color: #65451d;
+
+  border-radius: 5px;
+
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;
+  align-items: center;
+
+  gap: 12px;
+
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+
+  transition: transform 1s ease;
+
+  z-index: 1;
+
+  pointer-events: none;
+}
+
+/* Cute star bear */
+
+.bear {
+  font-size: 3rem;
+
+  animation: bearWiggle 2s ease-in-out infinite;
+}
+
+@keyframes bearWiggle {
+  0%,
+  100% {
+    transform: rotate(-5deg);
+  }
+
+  50% {
+    transform: rotate(5deg);
+  }
+}
+
+.letter-text {
+  font-size: 0.85rem;
+  font-weight: bold;
+}
+
+/* =========================================
+   HEART SEAL
+========================================= */
+
+.envelope-seal {
+  position: absolute;
+
+  top: 43%;
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  color: #fff0cc;
+
+  font-size: 1.5rem;
+
+  z-index: 5;
+
+  transition: opacity 0.3s;
+
+  pointer-events: none;
+}
+
+/* =========================================
+   ENVELOPE OPENING ANIMATION
+========================================= */
+
+.envelope.open {
+  animation: none;
+}
+
+.envelope.open .envelope-flap {
+  transform: rotateX(180deg);
+  z-index: 0;
+}
+
+.envelope.open .letter {
+  transform: translateY(-145px);
+  z-index: 6;
+}
+
+.envelope.open .envelope-seal {
+  opacity: 0;
+}
+
+/* =========================================
+   HINT TEXT
+========================================= */
+
+.hint {
+  color: #ac9775;
+  font-size: 0.85rem;
+  letter-spacing: 0.5px;
+}
+
+/* =========================================
+   BIRTHDAY MESSAGE
+========================================= */
+
+.opened-message {
+  opacity: 0;
+  visibility: hidden;
+
+  transform: translateY(25px);
+
+  transition:
+    opacity 1s ease,
+    transform 1s ease,
+    visibility 1s ease;
+}
+
+.opened-message.visible {
+  opacity: 1;
+  visibility: visible;
+
+  transform: translateY(0);
+}
+
+.opened-message h2 {
+  font-size: clamp(1.5rem, 5vw, 2.2rem);
+
+  color: #ffe5a0;
+
+  margin-bottom: 12px;
+
+  text-shadow: 0 0 15px rgba(255, 215, 100, 0.4);
+}
+
+.opened-message p {
+  color: #e3d1b0;
+  line-height: 1.7;
+}
+
+/* =========================================
+   CONTINUE BUTTON
+========================================= */
+
+#continueBtn {
+  margin-top: 25px;
+
+  padding: 14px 32px;
+
+  background: linear-gradient(
+    135deg,
+    #ffe8a3,
+    #e8b956
+  );
+
+  color: #24180c;
+
+  border: none;
+  border-radius: 30px;
+
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: bold;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 0 15px rgba(255, 200, 90, 0.3),
+    0 5px 15px rgba(0, 0, 0, 0.2);
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+#continueBtn:hover {
+  transform: translateY(-3px);
+
+  box-shadow:
+    0 0 25px rgba(255, 210, 100, 0.5),
+    0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* =========================================
+   MAGICAL GOLDEN STAR RAIN
+========================================= */
+
+.stars {
+  position: fixed;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+
+  overflow: hidden;
+
+  pointer-events: none;
+
+  z-index: 10;
+}
+
+/* =========================================
+   INDIVIDUAL FALLING STAR
+========================================= */
+
+.falling-star {
+  position: absolute;
+
+  top: -65px;
+  left: 0;
+
+  width: var(--size);
+  height: var(--size);
+
+  background: #fff6c9;
+
+  border-radius: 50%;
+
+  box-shadow:
+    0 0 4px #ffffff,
+    0 0 8px #ffe68a,
+    0 0 15px #ffc94d,
+    0 0 25px rgba(255, 190, 60, 0.5);
+
+  opacity: 0;
+
+  animation:
+    starFall var(--duration) linear forwards,
+    starTwinkle 0.7s ease-in-out infinite alternate;
+
+  pointer-events: none;
+}
+
+/* =========================================
+   GOLDEN TRAIL
+========================================= */
+
+.falling-star::before {
+  content: "";
+
+  position: absolute;
+
+  left: 50%;
+  bottom: 50%;
+
+  transform: translateX(-50%);
+
+  width: 2px;
+
+  height: var(--trail-length);
+
+  background: linear-gradient(
+    to top,
+    rgba(255, 245, 195, 0.95),
+    rgba(255, 215, 100, 0.6),
+    rgba(255, 185, 60, 0.2),
+    transparent
+  );
+
+  border-radius: 100px;
+
+  filter: blur(1px);
+}
+
+/* =========================================
+   CROSS-SHAPED SPARKLE
+========================================= */
+
+.falling-star::after {
+  content: "";
+
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+
+  width: calc(var(--size) * 3);
+  height: 1px;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    #fff9d5,
+    transparent
+  );
+
+  transform: translate(-50%, -50%);
+}
+
+/* =========================================
+   STAR FALLING ANIMATION
+========================================= */
+
+@keyframes starFall {
+  0% {
+    transform: translate3d(0, -20px, 0);
+    opacity: 0;
+  }
+
+  8% {
+    opacity: 1;
+  }
+
+  85% {
+    opacity: 0.9;
+  }
+
+  100% {
+    transform: translate3d(
+      var(--drift),
+      115dvh,
+      0
+    );
+
+    opacity: 0;
+  }
+}
+
+/* =========================================
+   STAR TWINKLE
+========================================= */
+
+@keyframes starTwinkle {
+  0% {
+    filter: brightness(0.7);
+  }
+
+  100% {
+    filter: brightness(1.8);
+  }
+}
+
+/* =========================================
+   TINY GOLDEN STARDUST
+========================================= */
+
+.stardust {
+  position: absolute;
+
+  top: -10px;
+
+  background: #ffe9a3;
+
+  border-radius: 50%;
+
+  box-shadow:
+    0 0 5px #ffdc76,
+    0 0 10px rgba(255, 210, 90, 0.7);
+
+  opacity: 0;
+
+  animation: dustFall var(--duration) linear forwards;
+
+  pointer-events: none;
+}
+
+/* =========================================
+   STARDUST FALLING ANIMATION
+========================================= */
+
+@keyframes dustFall {
+  0% {
+    transform: translate3d(0, 0, 0);
+    opacity: 0;
+  }
+
+  15% {
+    opacity: 0.8;
+  }
+
+  85% {
+    opacity: 0.6;
+  }
+
+  100% {
+    transform: translate3d(
+      var(--drift),
+      115dvh,
+      0
+    );
+
+    opacity: 0;
+  }
+}
+
+/* =========================================
+   MOBILE RESPONSIVENESS
+========================================= */
+
+@media (max-width: 480px) {
+  .invitation {
+    gap: 16px;
+    padding: 35px 15px;
+  }
+
+  .title {
+    font-size: 2.5rem;
+  }
+
+  .subtitle {
+    font-size: 0.9rem;
+  }
+
+  .envelope {
+    width: 240px;
+    height: 165px;
+    margin: 75px 0 25px;
+  }
+
+  .letter {
+    height: 135px;
+  }
+
+  .envelope.open .letter {
+    transform: translateY(-125px);
+  }
+
+  .bear {
+    font-size: 2.5rem;
+  }
+
+  .opened-message h2 {
+    font-size: 1.6rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .title,
+  .bear,
+  .envelope,
+  .falling-star,
+  .stardust {
+    animation: none;
+  }
+
+  .envelope-flap,
+  .letter,
+  .opened-message {
+    transition-duration: 0.01ms;
+  }
+}
+/* Smooth transition between pages */
+
+body {
+  transition: opacity 0.8s ease;
+}
+
+body.page-exit {
+  opacity: 0;
+}

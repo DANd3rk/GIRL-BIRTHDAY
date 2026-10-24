@@ -1,0 +1,1020 @@
+/* ==========================================
+   MY GOLDEN STAR
+   THE LITTLE BOOK OF YOU
+   COMPLETE CSS
+========================================== */
+
+/* ==========================================
+   1. THEME VARIABLES
+========================================== */
+
+:root {
+  --gold: #d8ad59;
+  --light-gold: #ffdf96;
+  --cream: #fff4dc;
+  --ink: #563c29;
+  --dark: #0d090c;
+
+  --paper: #fff3d8;
+  --paper-shadow: #e0cba5;
+}
+
+/* ==========================================
+   2. GENERAL RESET
+========================================== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  min-height: 100dvh;
+
+  background:
+    radial-gradient(
+      ellipse at 50% 30%,
+      #302015,
+      transparent 65%
+    ),
+    #09070b;
+
+  color: var(--cream);
+
+  font-family: Georgia, "Times New Roman", serif;
+
+  overflow-x: hidden;
+
+  transition: opacity 0.8s ease;
+}
+
+body.page-exit {
+  opacity: 0;
+}
+
+/* ==========================================
+   3. MAIN MEMORY SCENE
+========================================== */
+
+.memory-scene {
+  position: relative;
+
+  min-height: 100vh;
+  min-height: 100dvh;
+
+  padding: 45px 16px 70px;
+
+  overflow: hidden;
+}
+
+/* ==========================================
+   4. BACKGROUND STARS
+========================================== */
+
+.memory-stars {
+  position: absolute;
+  inset: 0;
+
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.memory-star {
+  position: absolute;
+
+  width: 3px;
+  height: 3px;
+
+  background: #ffe3a0;
+
+  border-radius: 50%;
+
+  box-shadow:
+    0 0 5px #ffe3a0,
+    0 0 10px #f4c768,
+    0 0 18px rgba(255, 195, 80, 0.3);
+
+  animation: twinkle 3s ease-in-out infinite alternate;
+}
+
+@keyframes twinkle {
+  from {
+    opacity: 0.15;
+    transform: scale(0.6);
+  }
+
+  to {
+    opacity: 0.9;
+    transform: scale(1.5);
+  }
+}
+
+/* ==========================================
+   5. PAGE HEADER
+========================================== */
+
+.page-header {
+  position: relative;
+  z-index: 1;
+
+  text-align: center;
+
+  margin: 0 auto 35px;
+
+  max-width: 650px;
+}
+
+.eyebrow {
+  font-family: "DM Sans", sans-serif;
+
+  color: var(--gold);
+
+  letter-spacing: 3px;
+
+  font-size: 0.7rem;
+  font-weight: 600;
+}
+
+.page-header h1 {
+  color: var(--light-gold);
+
+  font-size: clamp(1.8rem, 5vw, 3rem);
+
+  margin: 12px 0;
+
+  text-shadow:
+    0 0 15px rgba(255, 207, 113, 0.3);
+}
+
+.page-header p {
+  color: #d2bea0;
+
+  line-height: 1.6;
+
+  font-size: 0.95rem;
+}
+
+/* ==========================================
+   6. BOOK SECTION
+========================================== */
+
+.book-section {
+  position: relative;
+  z-index: 1;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+}
+
+/* ==========================================
+   7. BOOK CONTAINER
+========================================== */
+
+.book {
+  position: relative;
+
+  width: min(100%, 420px);
+  height: 530px;
+
+  perspective: 2200px;
+  transform-style: preserve-3d;
+
+  filter: drop-shadow(
+    0 24px 28px rgba(0, 0, 0, 0.6)
+  );
+}
+
+/* ==========================================
+   8. DECORATIVE BOOK SPINE
+========================================== */
+
+.book::before {
+  content: "";
+
+  position: absolute;
+
+  top: 8px;
+  bottom: 8px;
+  left: -8px;
+
+  width: 16px;
+
+  border-radius: 7px;
+
+  background: linear-gradient(
+    90deg,
+    #51301c,
+    #b5803c,
+    #51301c
+  );
+
+  z-index: 3;
+}
+
+/* ==========================================
+   9. BOOK COVER
+========================================== */
+
+.book-cover {
+  position: absolute;
+  inset: 0;
+
+  background:
+    radial-gradient(
+      circle at 50% 30%,
+      #61421f,
+      transparent 70%
+    ),
+    linear-gradient(
+      135deg,
+      #362014,
+      #181015
+    );
+
+  border: 2px solid #a87938;
+
+  border-radius: 8px 18px 18px 8px;
+
+  transform-origin: left center;
+
+  transition:
+    transform 1.15s cubic-bezier(0.2, 0.7, 0.2, 1),
+    opacity 0.6s ease;
+
+  z-index: 20;
+
+  backface-visibility: hidden;
+
+  box-shadow:
+    inset 0 0 35px rgba(0, 0, 0, 0.5),
+    0 10px 25px rgba(0, 0, 0, 0.4);
+}
+
+/* Open cover */
+
+.book-cover.opened {
+  transform: rotateY(-115deg);
+  opacity: 0;
+
+  pointer-events: none;
+}
+
+/* ==========================================
+   10. COVER DECORATIONS
+========================================== */
+
+.cover-border {
+  position: absolute;
+  inset: 18px;
+
+  border: 1px solid #b99250;
+
+  border-radius: 5px 12px 12px 5px;
+
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;
+  align-items: center;
+
+  gap: 25px;
+
+  padding: 22px;
+
+  text-align: center;
+}
+
+.cover-small-text,
+.cover-footer {
+  font-family: "DM Sans", sans-serif;
+
+  font-size: 0.65rem;
+
+  letter-spacing: 2px;
+
+  color: #d8b77c;
+}
+
+.cover-border h2 {
+  color: #ffe3a0;
+
+  font-size: clamp(2.2rem, 7vw, 3.6rem);
+
+  line-height: 1.12;
+
+  text-shadow:
+    0 0 15px rgba(255, 207, 113, 0.35);
+}
+
+.cover-border p {
+  color: #f5dba3;
+
+  font-style: italic;
+
+  font-size: 1.2rem;
+}
+
+.cover-star {
+  font-size: 4.5rem;
+
+  color: #f4ca71;
+
+  text-shadow: 0 0 22px #ffc45d;
+
+  animation: coverGlow 2s infinite alternate;
+}
+
+@keyframes coverGlow {
+  from {
+    transform: scale(0.95);
+    opacity: 0.7;
+  }
+
+  to {
+    transform: scale(1.08);
+    opacity: 1;
+  }
+}
+
+.cover-decoration {
+  position: absolute;
+
+  top: 8px;
+  right: 12px;
+
+  color: #e6bc74;
+}
+
+/* ==========================================
+   11. BOOK PAGE CONTAINER
+========================================== */
+
+.book-pages {
+  position: absolute;
+  inset: 0;
+
+  overflow: visible;
+
+  border-radius: 8px 18px 18px 8px;
+
+  background: #f8e9c9;
+
+  transform-style: preserve-3d;
+}
+
+/* ==========================================
+   12. INDIVIDUAL MEMORY PAGE
+========================================== */
+
+.memory-page {
+  position: absolute;
+  inset: 0;
+
+  background: linear-gradient(
+    90deg,
+    #e0cba5 0%,
+    #fff8e8 8%,
+    #fff3d8 100%
+  );
+
+  padding: 25px 27px 22px 33px;
+
+  color: var(--ink);
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+
+  text-align: center;
+
+  gap: 12px;
+
+  border-radius: 8px 18px 18px 8px;
+
+  transform-origin: left center;
+
+  backface-visibility: hidden;
+
+  transform: rotateY(0deg);
+
+  opacity: 1;
+
+  transition:
+    transform 0.95s cubic-bezier(
+      0.645,
+      0.045,
+      0.355,
+      1
+    ),
+    opacity 0.5s ease,
+    box-shadow 0.95s ease;
+
+  box-shadow:
+    inset 14px 0 25px rgba(77, 47, 20, 0.12),
+    5px 10px 20px rgba(0, 0, 0, 0.15);
+
+  pointer-events: none;
+
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  scrollbar-width: thin;
+  scrollbar-color: #d7b477 transparent;
+}
+
+/* ==========================================
+   13. PAGE STATES
+========================================== */
+
+/* Currently displayed page */
+
+.memory-page.active {
+  transform: rotateY(0deg);
+
+  opacity: 1;
+
+  z-index: 10;
+
+  pointer-events: auto;
+}
+
+/* Already turned pages */
+
+.memory-page.flipped {
+  transform: rotateY(-180deg);
+
+  opacity: 0;
+
+  pointer-events: none;
+}
+
+/* Pages waiting underneath */
+
+.memory-page.upcoming {
+  transform: rotateY(0deg);
+
+  opacity: 1;
+
+  pointer-events: none;
+}
+
+/* ==========================================
+   14. CHAPTER LABEL
+========================================== */
+
+.page-top {
+  font-family: "DM Sans", sans-serif;
+
+  font-size: 0.7rem;
+  font-weight: 600;
+
+  letter-spacing: 2px;
+
+  color: #a47d49;
+
+  text-transform: uppercase;
+}
+
+/* ==========================================
+   15. CHAPTER HEADING
+========================================== */
+
+.memory-page h3 {
+  font-family: Georgia, "Times New Roman", serif;
+
+  font-size: clamp(1.3rem, 4vw, 1.8rem);
+
+  font-weight: 700;
+
+  line-height: 1.25;
+
+  color: #614023;
+
+  text-align: center;
+}
+
+/* ==========================================
+   16. POLAROID PHOTO FRAME
+========================================== */
+
+.photo-frame {
+  width: 100%;
+  max-width: 275px;
+
+  height: 245px;
+
+  background: #fffdf7;
+
+  padding: 11px 11px 30px;
+
+  border-radius: 3px;
+
+  box-shadow:
+    0 8px 20px rgba(60, 35, 20, 0.2),
+    0 2px 5px rgba(60, 35, 20, 0.12);
+
+  transform: rotate(-3deg);
+
+  transition: transform 0.5s ease;
+
+  flex-shrink: 0;
+}
+
+/* Photo itself */
+
+.photo-frame img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: contain;
+
+  object-position: center;
+
+  display: block;
+
+  border-radius: 2px;
+}
+
+/* Hide the frame if the image is missing */
+
+.photo-frame.missing-photo {
+  display: none;
+}
+
+/* ==========================================
+   17. POLAROID ENTRANCE ANIMATION
+========================================== */
+
+.memory-page.active .photo-frame:not(.missing-photo) {
+  animation: polaroidAppear 0.8s ease both;
+}
+
+@keyframes polaroidAppear {
+  0% {
+    opacity: 0;
+    transform: rotate(-12deg) scale(0.85);
+  }
+
+  100% {
+    opacity: 1;
+    transform: rotate(-3deg) scale(1);
+  }
+}
+
+/* ==========================================
+   18. BEAUTIFUL HANDWRITTEN NOTES
+========================================== */
+
+.memory-caption {
+  font-family: "Caveat", "Segoe Print", cursive;
+
+  font-size: 1.65rem;
+  font-weight: 600;
+
+  line-height: 1.3;
+
+  letter-spacing: 0.2px;
+
+  color: #533721;
+
+  text-align: center;
+
+  width: 100%;
+  max-width: 310px;
+
+  padding: 12px 14px;
+
+  margin: auto 0;
+
+  background: rgba(
+    255,
+    249,
+    231,
+    0.75
+  );
+
+  border-left: 3px solid #d4ae70;
+
+  border-radius: 6px;
+
+  box-shadow:
+    0 3px 10px rgba(80, 50, 20, 0.06);
+}
+
+/* ==========================================
+   19. MEMORY NOTE ENTRANCE ANIMATION
+========================================== */
+
+.memory-page.active .memory-caption {
+  animation: memoryTextAppear 1s ease both;
+}
+
+.memory-page.active h3 {
+  animation: memoryTextAppear 0.8s ease both;
+}
+
+@keyframes memoryTextAppear {
+  from {
+    opacity: 0;
+
+    transform: translateY(15px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform: translateY(0);
+  }
+}
+
+/* ==========================================
+   20. PAGE NUMBER
+========================================== */
+
+.page-number {
+  font-family: "DM Sans", sans-serif;
+
+  font-size: 0.7rem;
+
+  color: #9a7750;
+
+  margin-top: auto;
+}
+
+/* ==========================================
+   21. BOOK SPARKLES CONTAINER
+========================================== */
+
+.book-sparkles {
+  position: absolute;
+  inset: 0;
+
+  pointer-events: none;
+
+  overflow: visible;
+
+  z-index: 30;
+}
+
+/* ==========================================
+   22. INDIVIDUAL BOOK SPARKLES
+========================================== */
+
+.book-sparkle {
+  position: absolute;
+
+  left: var(--start-x);
+  top: var(--start-y);
+
+  width: var(--size);
+  height: var(--size);
+
+  background: #ffe49a;
+
+  border-radius: 50%;
+
+  box-shadow:
+    0 0 5px #fff6cf,
+    0 0 12px #ffdb72,
+    0 0 22px rgba(255, 190, 40, 0.6);
+
+  animation:
+    sparkleFly var(--duration) ease-out forwards;
+}
+
+@keyframes sparkleFly {
+  0% {
+    transform: translate(0, 0) scale(0);
+    opacity: 0;
+  }
+
+  25% {
+    transform: translate(
+      calc(var(--move-x) * 0.3),
+      calc(var(--move-y) * 0.3)
+    ) scale(1.5);
+
+    opacity: 1;
+  }
+
+  100% {
+    transform: translate(
+      var(--move-x),
+      var(--move-y)
+    ) scale(0);
+
+    opacity: 0;
+  }
+}
+
+/* ==========================================
+   23. BOOK CONTROLS
+========================================== */
+
+.book-controls {
+  width: min(100%, 420px);
+
+  display: flex;
+
+  justify-content: space-between;
+  align-items: center;
+
+  gap: 16px;
+
+  margin-top: 30px;
+}
+
+/* ==========================================
+   24. PAGE ARROWS
+========================================== */
+
+.page-arrow {
+  width: 52px;
+  height: 52px;
+
+  flex: 0 0 52px;
+
+  border-radius: 50%;
+
+  border: 1px solid #e7bd73;
+
+  background: #302117;
+
+  color: #ffe0a0;
+
+  font-size: 1.5rem;
+
+  cursor: pointer;
+
+  transition:
+    background 0.25s ease,
+    color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.page-arrow:hover:not(:disabled) {
+  background: #d4ac68;
+
+  color: #26190e;
+
+  transform: scale(1.08);
+}
+
+.page-arrow:disabled {
+  opacity: 0.3;
+
+  cursor: not-allowed;
+}
+
+/* ==========================================
+   25. PAGE INDICATOR
+========================================== */
+
+.page-indicator {
+  font-family: "DM Sans", sans-serif;
+
+  font-size: 0.85rem;
+
+  color: #e6c995;
+
+  text-align: center;
+}
+
+/* ==========================================
+   26. BUTTONS
+========================================== */
+
+.open-book-btn,
+.continue-story {
+  border: none;
+
+  border-radius: 30px;
+
+  padding: 15px 30px;
+
+  background: linear-gradient(
+    135deg,
+    #ffe5a0,
+    #c9913c
+  );
+
+  color: #2c1a0e;
+
+  font-family: "DM Sans", sans-serif;
+
+  font-weight: 700;
+  font-size: 0.95rem;
+
+  cursor: pointer;
+
+  margin-top: 24px;
+
+  min-height: 48px;
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.open-book-btn:hover,
+.continue-story:hover {
+  transform: translateY(-3px);
+
+  box-shadow:
+    0 0 20px rgba(255, 207, 113, 0.4);
+}
+
+/* Hide open book button after opening */
+
+.open-book-btn.hidden {
+  display: none;
+}
+
+/* ==========================================
+   27. SWIPE INSTRUCTIONS
+========================================== */
+
+.swipe-hint {
+  font-family: "DM Sans", sans-serif;
+
+  font-size: 0.8rem;
+
+  color: #b8a285;
+
+  margin-top: 18px;
+}
+
+/* ==========================================
+   28. CONTINUE STORY BUTTON
+========================================== */
+
+.continue-story {
+  display: none;
+
+  margin-top: 30px;
+}
+
+.continue-story.visible {
+  display: block;
+
+  animation: fadeUp 0.7s ease both;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ==========================================
+   29. MOBILE RESPONSIVENESS
+========================================== */
+
+@media (max-width: 480px) {
+
+  .memory-scene {
+    padding: 28px 14px 60px;
+  }
+
+  .page-header {
+    margin-bottom: 28px;
+  }
+
+  .page-header h1 {
+    font-size: 2rem;
+  }
+
+  .page-header p {
+    font-size: 0.9rem;
+  }
+
+  .book {
+    height: 530px;
+  }
+
+  .memory-page {
+    padding: 22px 18px 18px 24px;
+
+    gap: 10px;
+  }
+
+  .memory-page h3 {
+    font-size: 1.4rem;
+  }
+
+  .photo-frame {
+    max-width: 245px;
+
+    height: 220px;
+
+    transform: rotate(-2deg);
+  }
+
+  .memory-caption {
+    font-size: 1.4rem;
+
+    line-height: 1.3;
+
+    padding: 10px 12px;
+  }
+
+  .cover-border {
+    inset: 12px;
+
+    gap: 20px;
+  }
+
+  .cover-border h2 {
+    font-size: 2.5rem;
+  }
+
+  .book-controls {
+    margin-top: 25px;
+  }
+
+}
+
+/* ==========================================
+   30. EXTRA SMALL SCREENS
+========================================== */
+
+@media (max-width: 350px) {
+
+  .book {
+    height: 500px;
+  }
+
+  .memory-page h3 {
+    font-size: 1.25rem;
+  }
+
+  .photo-frame {
+    height: 190px;
+  }
+
+  .memory-caption {
+    font-size: 1.25rem;
+  }
+
+  .cover-border h2 {
+    font-size: 2rem;
+  }
+
+}
+
+/* ==========================================
+   31. ACCESSIBILITY
+========================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .memory-star,
+  .cover-star,
+  .book-sparkle {
+    animation: none;
+  }
+
+  .book-cover,
+  .memory-page,
+  .photo-frame {
+    transition-duration: 0.01ms;
+  }
+
+  .memory-page.active h3,
+  .memory-page.active .memory-caption,
+  .memory-page.active .photo-frame {
+    animation: none;
+  }
+
+}
+/* Oura Ring image */
+
+.oura-image {
+  width: 110px;
+  height: 110px;
+
+  max-width: 100%;
+  object-fit: contain;
+
+  display: block;
+  margin: 0 auto;
+
+  filter: drop-shadow(
+    0 5px 10px rgba(0, 0, 0, 0.2)
+  );
+}

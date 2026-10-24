@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Our Book of Memories | My Golden Star</title>
+
+  <link rel="stylesheet" href="memories.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin>
+
+<link
+  href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=DM+Sans:wght@400;500;600&display=swap"
+  rel="stylesheet"
+>
+</head>
+
+<body>
+
+  <main class="memory-scene">
+
+    <!-- Decorative background -->
+    <div class="memory-stars" id="memoryStars"></div>
+
+    <header class="page-header">
+      <span class="eyebrow">MY GOLDEN STAR PRESENTS</span>
+      <h1>Our Little Book of Memories</h1>
+      <p>A collection of moments, smiles, and reasons we love you.</p>
+    </header>
+
+    <!-- Interactive book -->
+    <section class="book-section">
+
+      <div class="book" id="memoryBook">
+
+        <!-- Book Cover -->
+        <div class="book-cover" id="bookCover">
+
+          <div class="cover-decoration">✦</div>
+
+          <div class="cover-border">
+
+            <span class="cover-small-text">
+              A STORY WRITTEN WITH LOVE
+            </span>
+
+            <h2>The Little<br>Book of You</h2>
+
+            <div class="cover-star">✧</div>
+
+            <p>For Oyindamola</p>
+
+            <span class="cover-footer">
+              VOL. 26 • THE BIRTHDAY EDITION
+            </span>
+
+          </div>
+
+        </div>
+
+        <!-- Pages are created using JavaScript -->
+        <!-- Pages of our magical memory book -->
+<div class="book-pages" id="bookPages"></div>
+
+<!-- Sparkles created when pages turn -->
+<div class="book-sparkles" id="bookSparkles"></div>
+      </div>
+
+      <!-- Controls -->
+      <div class="book-controls">
+
+        <button id="prevPage" class="page-arrow" aria-label="Previous page">
+          ←
+        </button>
+
+        <div class="page-indicator" id="pageIndicator">
+          Ready to begin?
+        </div>
+
+        <button id="nextPage" class="page-arrow" aria-label="Next page">
+          →
+        </button>
+
+      </div>
+
+      <button class="open-book-btn" id="openBookBtn">
+        Open Our Book ✨
+      </button>
+
+      <p class="swipe-hint" id="swipeHint">
+        Swipe the pages or use the arrows
+      </p>
+
+      <button class="continue-story" id="continueStory">
+        One More Thing... ❤️
+      </button>
+
+    </section>
+
+  </main>
+
+  <script src="memories.js"></script>
+
+</body>
+</html>
